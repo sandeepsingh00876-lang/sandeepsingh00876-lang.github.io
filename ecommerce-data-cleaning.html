@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-commerce Data Cleaning | Sandeep Singh</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f0f2f5;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #2563eb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #111827;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>E-commerce Data Cleaning</h1>
+    <p>Excel Data Cleaning & Data Quality Project</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Project Overview</h2>
+
+        <p>
+            This project focuses on cleaning and validating an
+            e-commerce sales dataset using Microsoft Excel.
+        </p>
+
+        <p>
+            The dataset contains approximately 50,000 sales records
+            along with customer, product and store information.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>Tools Used</h2>
+
+        <p>
+            Excel • XLOOKUP • Filters • Tables • PivotTables •
+            Data Validation
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>Data Quality Checks</h2>
+
+        <table>
+
+            <tr>
+                <th>Check</th>
+                <th>Result</th>
+                <th>Action</th>
+            </tr>
+
+            <tr>
+                <td>Duplicate Transaction IDs</td>
+                <td>0</td>
+                <td>Clean</td>
+            </tr>
+
+            <tr>
+                <td>Missing Customer IDs</td>
+                <td>1,844</td>
+                <td>Retain & Flag</td>
+            </tr>
+
+            <tr>
+                <td>Missing Discount</td>
+                <td>2,583</td>
+                <td>Retain & Investigate</td>
+            </tr>
+
+            <tr>
+                <td>Invalid Product ID</td>
+                <td>P99999</td>
+                <td>Flag</td>
+            </tr>
+
+            <tr>
+                <td>Invalid Store ID</td>
+                <td>S999</td>
+                <td>Flag</td>
+            </tr>
+
+        </table>
+    </div>
+
+
+    <div class="card">
+        <h2>Data Cleaning Process</h2>
+
+        <p>Raw Data → Data Inspection → Cleaning → Validation → Final Dataset</p>
+
+        <ul>
+            <li>Checked duplicate transaction IDs</li>
+            <li>Checked missing customer IDs</li>
+            <li>Checked missing discount values</li>
+            <li>Validated product IDs using XLOOKUP</li>
+            <li>Validated store IDs</li>
+            <li>Checked quantity values</li>
+            <li>Checked date completeness</li>
+        </ul>
+    </div>
+
+
+    <div class="card">
+        <h2>Example: Product ID Validation</h2>
+
+        <p>
+            XLOOKUP was used to compare product IDs in the sales
+            data with the product master table.
+        </p>
+
+        <p>
+            The check identified <strong>P99999</strong> as a product
+            ID that was not found in the product table.
+        </p>
+
+        <p>
+            Instead of deleting the record, it was flagged for
+            further investigation.
+        </p>
+    </div>
+
+
+    
+</div>
+
+
+<footer>
+
+    <p>Sandeep Singh | Data Cleaning & Data Analysis</p>
+
+    <p>
+        <a href="https://www.linkedin.com/in/sandeep-singh-970183328/"
+           target="_blank"
+           style="color:white;">
+           LinkedIn
+        </a>
+    </p>
+
+</footer>
+
+</body>
+</html>
