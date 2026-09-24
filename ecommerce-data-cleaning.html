@@ -108,114 +108,243 @@
         </p>
     </div>
 
-    <div class="card"> <h2>Project Screenshots</h2> 
-    <p> Screenshots showing the data cleaning, validation and analysis process performed in Microsoft Excel. </p> 
-    <div class="image-gallery"> <div class="image-item"> 
-        <img src="images\row-data.png" alt="Data Cleaning Screenshot 1"> 
-        <p>Row Data</p> 
-    </div> 
+    <!-- PROJECT SCREENSHOTS & REPORT -->
+
+<div class="card">
+
+    <h2>Project Screenshots & Data Quality Report</h2>
+
+    <p>
+        The following screenshots document the data-quality checks
+        performed on the e-commerce sales dataset. Each check was
+        reviewed in Excel and the identified issues were documented
+        for further investigation or validation.
+    </p>
 
 
-    <div class="card">
-        <h2>Data Quality Checks</h2>
+    <!-- 1. RAW DATA -->
 
-        <table>
+    <div class="screenshot">
 
-            <tr>
-                <th>Check</th>
-                <th>Result</th>
-                <th>Action</th>
-            </tr>
+        <h3>1. Raw Sales Data</h3>
 
-            <tr>
-                <td>Duplicate Transaction IDs</td>
-                <td>0</td>
-                <td>Clean</td>
-            </tr>
+        <img src="images\raw-data.png"
+             alt="Raw e-commerce sales data">
 
-            <tr>
-                <td>Missing Customer IDs</td>
-                <td>1,844</td>
-                <td>Retain & Flag</td>
-            </tr>
+        <div class="report-box">
 
-            <tr>
-                <td>Missing Discount</td>
-                <td>2,583</td>
-                <td>Retain & Investigate</td>
-            </tr>
+            <h4>Data Overview</h4>
 
-            <tr>
-                <td>Invalid Product ID</td>
-                <td>P99999</td>
-                <td>Flag</td>
-            </tr>
+            <p>
+                The original sales dataset contains approximately
+                <strong>50,000 transaction records</strong>.
+                The dataset includes transaction, date, product,
+                store, customer, quantity, discount and return
+                information.
+            </p>
 
-            <tr>
-                <td>Invalid Store ID</td>
-                <td>S999</td>
-                <td>Flag</td>
-            </tr>
+            <p>
+                The raw data was reviewed before performing
+                validation and cleaning checks.
+            </p>
 
-        </table>
+        </div>
+
     </div>
 
 
-    <div class="card">
-        <h2>Data Cleaning Process</h2>
+    <!-- DATA QUALITY REPORT -->
 
-        <p>Raw Data → Data Inspection → Cleaning → Validation → Final Dataset</p>
+<div class="card">
 
-        <ul>
-            <li>Checked duplicate transaction IDs</li>
-            <li>Checked missing customer IDs</li>
-            <li>Checked missing discount values</li>
-            <li>Validated product IDs using XLOOKUP</li>
-            <li>Validated store IDs</li>
-            <li>Checked quantity values</li>
-            <li>Checked date completeness</li>
-        </ul>
+    <h2>Data Quality Report</h2>
+
+    <p>
+        The dataset was reviewed across key fields to identify
+        duplicates, missing values, invalid references and
+        inconsistent data. Issues requiring further investigation
+        are documented below.
+    </p>
+
+
+    <!-- GENERAL CHECKS -->
+
+    <h3>General Data Checks</h3>
+
+    <ul>
+        <li>
+            <strong>Transaction ID:</strong>
+            No duplicate transaction IDs were identified.
+        </li>
+
+        <li>
+            <strong>Date:</strong>
+            No missing date values were identified.
+        </li>
+
+        <li>
+            <strong>Quantity:</strong>
+            Quantity values were within the observed range of 1–4.
+        </li>
+
+        <li>
+            <strong>Returned:</strong>
+            The returned field was reviewed as part of the
+            data-quality assessment.
+        </li>
+    </ul>
+
+
+    <!-- PROBLEMS IDENTIFIED -->
+
+    <h3>Problems Identified</h3>
+
+    <p>
+        The following issues were identified during the
+        data-quality checks. Each issue was reviewed and
+        documented rather than automatically deleting records.
+    </p>
+
+
+    <!-- CUSTOMER ID -->
+
+    <div class="issue-card">
+
+        <h3>1. Missing Customer IDs</h3>
+
+        <img src="images/BlankCustomerIds.png"
+             alt="Missing customer ID records">
+
+        <div class="issue-report">
+
+            <p>
+                <strong>Finding:</strong>
+                1,844 sales records were found with missing
+                customer IDs.
+            </p>
+
+            <p>
+                <strong>Action:</strong>
+                The records were retained and flagged for
+                further investigation rather than deleted.
+            </p>
+
+        </div>
+
     </div>
 
 
-    <div class="card">
-        <h2>Example: Product ID Validation</h2>
+    <!-- DISCOUNT -->
 
-        <p>
-            XLOOKUP was used to compare product IDs in the sales
-            data with the product master table.
-        </p>
+    <div class="issue-card">
 
-        <p>
-            The check identified <strong>P99999</strong> as a product
-            ID that was not found in the product table.
-        </p>
+        <h3>2. Missing Discount Values</h3>
 
-        <p>
-            Instead of deleting the record, it was flagged for
-            further investigation.
-        </p>
+        <img src="images/BlankDiscountValues.png"
+             alt="Blank discount values">
+
+        <div class="issue-report">
+
+            <p>
+                <strong>Finding:</strong>
+                2,583 discount values were blank.
+                The observed discount range was 0 to 0.3,
+                with 29,907 records having a zero discount.
+            </p>
+
+            <p>
+                <strong>Action:</strong>
+                Blank discount values were retained and
+                flagged for further investigation instead of
+                being replaced with an assumed value.
+            </p>
+
+        </div>
+
     </div>
 
 
-    
+    <!-- PRODUCT ID -->
+
+    <div class="issue-card">
+
+        <h3>3. Unmatched Product ID</h3>
+
+        <img src="images/UnmatchedProductIds.png"
+             alt="Product ID validation">
+
+        <div class="issue-report">
+
+            <p>
+                <strong>Finding:</strong>
+                Product IDs were compared with the product
+                master table using XLOOKUP. The check identified
+                <strong>P99999</strong> as an unmatched product ID.
+            </p>
+
+            <p>
+                <strong>Action:</strong>
+                The record was retained and flagged for
+                investigation rather than deleted.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- STORE ID -->
+
+    <div class="issue-card">
+
+        <h3>4. Unmatched Store ID</h3>
+
+        <img src="images/UnmatchedStoreIds.png"
+             alt="Store ID validation">
+
+        <div class="issue-report">
+
+            <p>
+                <strong>Finding:</strong>
+                Store IDs were compared with the store master
+                table. The check identified
+                <strong>S999</strong> as an unmatched store ID.
+            </p>
+
+            <p>
+                <strong>Action:</strong>
+                The record was retained and flagged for
+                further investigation.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="report-summary">
+
+        <h3>Data Quality Summary</h3>
+
+        <p>
+            The review identified four areas requiring attention:
+            missing customer IDs, missing discount values,
+            an unmatched product ID and an unmatched store ID.
+        </p>
+
+        <p>
+            Rather than removing potentially useful transactions,
+            the identified records were retained and flagged.
+            This preserves the original dataset while making
+            data-quality issues clearly visible for further
+            investigation.
+        </p>
+
+    </div>
+
 </div>
-    <!-- Final Summary --> 
-     <div class="report-summary"> 
-        <h3>Final Summary</h3> 
-        <ul> 
-            <li>50,000 sales records were reviewed.</li> 
-            <li>No duplicate transaction IDs were identified.</li> 
-            <li>1,844 missing customer IDs were identified and flagged.</li> 
-            <li>2,583 missing discount values were identified for investigation.</li> 
-            <li>Product ID <strong>P99999</strong> was not found in the Product Data table.</li> 
-            <li>Store ID <strong>S999</strong> was not found in the Store Data table.</li> 
-            <li>Quantity and date fields passed the initial validation checks.</li> 
-        </ul> <div class="next-step"> <strong>Next Step:</strong> 
-            Integrate Sales Data with Customer, Product, and Store Data for further analysis and reporting. 
-    </div> 
-</div> 
-</section>
 
 
 <footer>
